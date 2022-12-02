@@ -1,4 +1,13 @@
-export const heroes = [
+export interface IHero {
+    id: string;
+    superhero: string;
+    publisher: string;
+    alter_ego: string;
+    first_appearance: string;
+    characters: string;
+}
+
+export const heroes: IHero[] = [
     {
         id: "dc-batman",
         superhero: "Batman",
