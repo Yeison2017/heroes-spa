@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getHeroesByPublisher } from "../helpers/getHeroesByPublisher";
 import { IHero } from "../data/heroes";
+import HeroCard from "./HeroCard";
 
 interface IHeroListProps {
     publisher: string;
@@ -14,11 +15,11 @@ const HeroList = ({ publisher }: IHeroListProps) => {
     }, []);
 
     return (
-        <ul>
+        <div className="row rows-cols-1 row-cols-md-3 g-3">
             {heroes.map((hero: IHero) => (
-                <li>{hero.superhero}</li>
+                <HeroCard key={hero.id} {...hero} />
             ))}
-        </ul>
+        </div>
     );
 };
 
