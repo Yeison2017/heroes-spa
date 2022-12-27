@@ -3,6 +3,7 @@ import queryString from "query-string";
 
 import { HeroCard } from "../components";
 import { useForm } from "../hooks/useForm";
+import { getHeroesByName } from "../helpers";
 
 type Event = React.FormEvent<HTMLFormElement>;
 
@@ -11,9 +12,10 @@ const SearchPage = () => {
   const location = useLocation();
 
   const { q = "" } = queryString.parse(location.search);
+  const heroes = getHeroesByName(q as string);
 
   const { searchText, onInputChange } = useForm({
-    searchText: "",
+    searchText: q as string,
   });
 
   const onSearchSubmit = (event: Event) => {
@@ -56,7 +58,9 @@ const SearchPage = () => {
             No hero with <b>{q}</b>
           </div>
 
-          {/* <HeroCard /> */}
+          {heroes.map((hero) => (
+            <HeroCard key={hero.id} {...hero} />
+          ))}
         </div>
       </div>
     </>
