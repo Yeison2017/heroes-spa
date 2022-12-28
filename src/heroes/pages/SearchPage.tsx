@@ -63,8 +63,6 @@ const SearchPage = () => {
             )
           )}
 
-          <div className="alert alert-primary">Search a hero</div>
-
           {heroes.map((hero) => (
             <HeroCard key={hero.id} {...hero} />
           ))}
