@@ -21,8 +21,6 @@ const SearchPage = () => {
   const onSearchSubmit = (event: Event) => {
     event.preventDefault();
 
-    if (searchText.trim().length <= 1) return;
-
     navigate(`?q=${searchText}`);
   };
 
@@ -53,10 +51,19 @@ const SearchPage = () => {
           <h4>Results</h4>
           <hr />
 
+          {q === "" ? (
+            <div className="alert alert-primary animate__animated animate__fadeInLeft">
+              Search a hero
+            </div>
+          ) : (
+            heroes.length === 0 && (
+              <div className="alert alert-danger animate__animated animate__fadeInLeft">
+                No hero with <b>{q}</b>
+              </div>
+            )
+          )}
+
           <div className="alert alert-primary">Search a hero</div>
-          <div className="alert alert-danger">
-            No hero with <b>{q}</b>
-          </div>
 
           {heroes.map((hero) => (
             <HeroCard key={hero.id} {...hero} />
