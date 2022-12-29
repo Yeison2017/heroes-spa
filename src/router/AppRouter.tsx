@@ -4,12 +4,23 @@ import LoginPage from "../auth/pages/LoginPage";
 import { Navbar } from "../ui/components/NavBar";
 import HeroesRoutes from "./HeroesRoutes";
 import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 const AppRouter = () => {
   return (
     <>
       <Routes>
-        <Route path="login" element={<LoginPage />} />
+        <Route
+          path="login/*"
+          element={
+            <PublicRoute>
+              <Routes>
+                <Route path="/*" element={<LoginPage />} />
+              </Routes>
+            </PublicRoute>
+          }
+        />
+
         <Route
           path="/*"
           element={
