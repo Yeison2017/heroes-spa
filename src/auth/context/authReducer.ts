@@ -2,7 +2,7 @@ import { types } from "../types/types";
 
 export interface IInitialState {
   logged: boolean;
-  name: string | null;
+  user?: string | null;
 }
 
 export interface IAction {
