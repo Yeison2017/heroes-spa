@@ -7,7 +7,7 @@ export interface IInitialState {
 
 export interface IAction {
   type: string;
-  payload: any;
+  payload?: any;
 }
 
 export const authReducer = (state: IInitialState, action: IAction) => {

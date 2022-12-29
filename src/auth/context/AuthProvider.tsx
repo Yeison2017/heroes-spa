@@ -7,10 +7,6 @@ interface IAuthProvider {
   children: ReactNode;
 }
 
-// const initialState: IInitialState = {
-//   logged: false,
-// };
-
 const init = (): IInitialState => {
   const user = JSON.parse(localStorage.getItem("user") || "");
   return {
@@ -38,11 +34,18 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
     dispatch(action);
   };
 
+  const logout = () => {
+    localStorage.removeItem("user");
+    const action = { type: types.logout };
+    dispatch(action);
+  };
+
   return (
     <AuthContext.Provider
       value={{
         ...authState,
-        login: login,
+        login,
+        logout,
       }}
     >
       {children}
