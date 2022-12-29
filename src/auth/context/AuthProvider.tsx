@@ -8,7 +8,7 @@ interface IAuthProvider {
 }
 
 const init = (): IInitialState => {
-  const user = JSON.parse(localStorage.getItem("user") || "");
+  const user = JSON.parse(localStorage.getItem("user") as string);
   return {
     logged: !!user,
     user: user,
