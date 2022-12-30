@@ -2,12 +2,17 @@ import { types } from "../types/types";
 
 export interface IInitialState {
   logged: boolean;
-  user?: string | null;
+  user?: string | null | IUser;
 }
 
 export interface IAction {
   type: string;
   payload?: any;
+}
+
+interface IUser {
+  id: string;
+  name: string;
 }
 
 export const authReducer = (state: IInitialState, action: IAction) => {
