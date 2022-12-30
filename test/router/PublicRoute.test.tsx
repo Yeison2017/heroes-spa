@@ -18,7 +18,7 @@ describe("Pruebas en <PublicRout />", () => {
       </AuthContext.Provider>
     );
 
-    expect(screen.getByText("Ruta pública")).toBeTruthy();
+    expect(screen.getByText("Ruta publica")).toBeTruthy();
   });
 
   test("debe de navegar si está autenticado", () => {
@@ -32,7 +32,7 @@ describe("Pruebas en <PublicRout />", () => {
 
     render(
       <AuthContext.Provider value={contextValue}>
-        <MemoryRouter initialEntries={["/login"]}>
+        <MemoryRouter initialEntries={["/marvel"]}>
           <Routes>
             <Route
               path="login"
