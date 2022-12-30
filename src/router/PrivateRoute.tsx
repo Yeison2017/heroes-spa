@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../auth";
 
 interface IPrivateRoute {
@@ -9,6 +9,11 @@ interface IPrivateRoute {
 
 const PrivateRoute = ({ children }: IPrivateRoute) => {
   const { logged } = useContext(AuthContext);
+  const { pathname, search } = useLocation();
+
+  const lastPath = pathname + search;
+  localStorage.setItem("lastPath", lastPath);
+  console.log("re-render");
 
   return logged ? children : <Navigate to="/login" />;
 };
