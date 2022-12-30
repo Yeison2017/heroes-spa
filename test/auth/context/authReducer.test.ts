@@ -37,7 +37,6 @@ describe("Pruebas en authRecuer", () => {
     };
 
     const newState = authReducer(state, action);
-    console.log(newState);
 
     expect(newState).toEqual({ logged: false, name: null });
   });
