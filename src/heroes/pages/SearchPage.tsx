@@ -1,5 +1,5 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import queryString from "query-string";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { HeroCard } from "../components";
 import { useForm } from "../hooks/useForm";
@@ -9,9 +9,10 @@ type Event = React.FormEvent<HTMLFormElement>;
 
 const SearchPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
 
-  const { q = "" } = queryString.parse(location.search);
+  const [searchParams] = useSearchParams();
+  const { q = "" } = Object.fromEntries([...searchParams]);
+
   const heroes = getHeroesByName(q as string);
 
   const { searchText, onInputChange } = useForm({
@@ -23,6 +24,10 @@ const SearchPage = () => {
 
     navigate(`?q=${searchText}`);
   };
+
+  useEffect(() => {
+    console.log(Object.fromEntries([...searchParams]));
+  }, [searchParams]);
 
   return (
     <>

@@ -38,6 +38,6 @@ describe("Pruebas en <AppRouter />", () => {
       </MemoryRouter>
     );
 
-    screen.debug();
+    expect(screen.getAllByText("Marvel").length).toBeGreaterThanOrEqual(1);
   });
 });
