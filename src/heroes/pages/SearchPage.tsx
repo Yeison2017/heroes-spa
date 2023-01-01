@@ -15,6 +15,9 @@ const SearchPage = () => {
 
   const heroes = getHeroesByName(q as string);
 
+  const showSearch = q.length === 0;
+  const showError = q.length > 0 && heroes.length === 0;
+
   const { searchText, onInputChange } = useForm({
     searchText: q as string,
   });
@@ -26,7 +29,7 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    console.log(Object.fromEntries([...searchParams]));
+    // console.log(Object.fromEntries([...searchParams]));
   }, [searchParams]);
 
   return (
@@ -56,17 +59,20 @@ const SearchPage = () => {
           <h4>Results</h4>
           <hr />
 
-          {q === "" ? (
-            <div className="alert alert-primary animate__animated animate__fadeInLeft">
-              Search a hero
-            </div>
-          ) : (
-            heroes.length === 0 && (
-              <div className="alert alert-danger animate__animated animate__fadeInLeft">
-                No hero with <b>{q}</b>
-              </div>
-            )
-          )}
+          <div
+            className="alert alert-primary animate__animated animate__fadeInLeft"
+            style={{ display: showSearch ? "" : "none" }}
+          >
+            Search a hero
+          </div>
+
+          <div
+            arial-label="alert-danger"
+            className="alert alert-danger animate__animated animate__fadeInLeft"
+            style={{ display: showError ? "" : "none" }}
+          >
+            No hero with <b>{q}</b>
+          </div>
 
           {heroes.map((hero) => (
             <HeroCard key={hero.id} {...hero} />

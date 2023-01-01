@@ -44,6 +44,14 @@ exports[`Pruebas en <SearchPage /> debe de mostrarse correctamente con valores p
       >
         Search a hero
       </div>
+      <div
+        arial-label="alert-danger"
+        class="alert alert-danger animate__animated animate__fadeInLeft"
+        style="display: none;"
+      >
+        No hero with 
+        <b />
+      </div>
     </div>
   </div>
 </div>
