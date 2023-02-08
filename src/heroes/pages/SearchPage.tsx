@@ -28,9 +28,7 @@ const SearchPage = () => {
     navigate(`?q=${searchText}`);
   };
 
-  useEffect(() => {
-    // console.log(Object.fromEntries([...searchParams]));
-  }, [searchParams]);
+  useEffect(() => {}, [searchParams]);
 
   return (
     <>
