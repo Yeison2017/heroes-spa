@@ -8,8 +8,9 @@ const HeroCard = ({
   alter_ego,
   first_appearance,
   characters,
+  heroImageUrl,
 }: IHero) => {
-  const heroImageUrl = `src/assets/heroes/${id}.jpg`;
+  // const heroImageUrl = `src/assets/heroes/${id}.jpg`;
   return (
     <div className="col animate__animated animate__fadeIn">
       <div className="card">
